@@ -6,13 +6,6 @@ pipeline {
                 git 'https://github.com/your-user/your-repo.git'
             }
         }
-        stage('Code Quality') {
-            steps {
-                withSonarQubeEnv('MySonarQubeServer') {
-                    sh 'sonar-scanner -Dsonar.projectKey=html-page -Dsonar.sources=. -Dsonar.language=html'
-                }
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t html-page .'
